@@ -5,9 +5,8 @@
 package EstructurasDeDatos;
 
 /**
- * En esta clase se almacenan los nodos que componen a las listas, colas y pilas
- * @author Fabrizio Spiotta, Georgina Akel, Daniel Morillo
- * @param <T>
+ *
+ * @author fabriziospiotta
  */
 public class Nodo<T> {
     

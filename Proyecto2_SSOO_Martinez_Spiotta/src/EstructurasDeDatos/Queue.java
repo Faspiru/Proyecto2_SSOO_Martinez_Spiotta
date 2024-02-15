@@ -8,7 +8,7 @@ package EstructurasDeDatos;
  *
  * @author fabriziospiotta
  */
-public class Cola<T> {
+public class Queue<T> {
     
     private Nodo<T> pFirst;
     private Nodo<T> pLast;
@@ -17,7 +17,7 @@ public class Cola<T> {
     /**
      * Constructor de la clase cola
      */
-    public Cola(){
+    public Queue(){
         pFirst = null;
         pLast = null;
         size = 0;
@@ -75,6 +75,23 @@ public class Cola<T> {
      */
     public T leerCabeza() {
         return pFirst.getElemento();
+    }
+    
+    public T poll(){
+        T element = pFirst.getElemento();
+        this.desencolar();
+        return element;
+    }
+    
+    public String converterToString() {
+        String cadena = "";
+        Nodo aux = pFirst;
+        while (aux != pLast) {
+            cadena += aux.getElemento() + " --> ";
+            aux = aux.getpNext();
+        }
+        cadena += aux.getElemento();
+        return cadena;
     }
     
     /**
