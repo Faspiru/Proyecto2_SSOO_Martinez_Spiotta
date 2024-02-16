@@ -4,6 +4,8 @@
  */
 package EstructurasDeDatos;
 
+import Clases.Character;
+
 /**
  *
  * @author fabriziospiotta
@@ -87,10 +89,10 @@ public class Queue<T> {
         String cadena = "";
         Nodo aux = pFirst;
         while (aux != pLast) {
-            cadena += aux.getElemento() + " --> ";
+            cadena += Character.class.cast(aux.getElemento()).getId() + " --> ";
             aux = aux.getpNext();
         }
-        cadena += aux.getElemento();
+        cadena += Character.class.cast(aux.getElemento()).getId();
         return cadena;
     }
     

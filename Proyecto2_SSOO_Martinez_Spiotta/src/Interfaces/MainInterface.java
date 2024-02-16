@@ -24,7 +24,7 @@ public class MainInterface extends javax.swing.JFrame {
         
         this.nickelodeon = nickelodeon;
         this.cartoonNetwork = cartoonNetwork;
-        
+           
         OS so = new OS(nickelodeon, cartoonNetwork);
         
         so.generateCharacterAvatar();
@@ -33,6 +33,8 @@ public class MainInterface extends javax.swing.JFrame {
         so.generateCharacterAvatar();
         so.generateCharacterAvatar();
         System.out.println("hola");
+        String cadena = nickelodeon.getColaMedia().converterToString();
+        System.out.println(cadena);
         
     }
 
