@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package EstructurasDeDatos;
 
 import Clases.Character;
@@ -10,25 +6,19 @@ import Clases.Character;
  *
  * @author fabriziospiotta
  */
-public class Queue<T> {
+public class Queue {
     
-    private Nodo<T> pFirst;
-    private Nodo<T> pLast;
+    private Nodo pFirst;
+    private Nodo pLast;
     private int size;
     
-    /**
-     * Constructor de la clase cola
-     */
+
     public Queue(){
         pFirst = null;
         pLast = null;
         size = 0;
     }
-    
-    /**
-     * Método que indica si la cola está vacía
-     * @return 
-     */
+
     public boolean esVacia() {
         if (size == 0) {
             return true;
@@ -36,21 +26,15 @@ public class Queue<T> {
         return false;
     }
     
-    /**
-     * Método que destruye la cola
-     */
+
     public void destructor() {
         while(pFirst!= null) {
             pFirst = pFirst.getpNext();
         }
     }
-    
-    /**
-     * Método para encolar un valor en la cola
-     * @param valor valor para ser encolado
-     */
-    public void encolar(T valor) {
-        Nodo<T> pNew = new Nodo(valor);
+
+    public void encolar(Character valor) {
+        Nodo pNew = new Nodo(valor);
         if (pFirst == null) {
             pFirst = pNew;
         } else {
@@ -60,9 +44,6 @@ public class Queue<T> {
         size ++; 
     }
     
-    /**
-     * Método que desencola el primer valor de la cola
-     */
     public void desencolar() {
         pFirst = pFirst.getpNext();
         size --;
@@ -71,16 +52,12 @@ public class Queue<T> {
         }
     }
     
-    /**
-     * Método que devuelve el valor del primer nodo de la cola
-     * @return elemento de pFirst de la cola
-     */
-    public T leerCabeza() {
+    public Character leerCabeza() {
         return pFirst.getElemento();
     }
     
-    public T poll(){
-        T element = pFirst.getElemento();
+    public Character poll(){
+        Character element = pFirst.getElemento();
         this.desencolar();
         return element;
     }
@@ -88,58 +65,33 @@ public class Queue<T> {
     public String converterToString() {
         String cadena = "";
         Nodo aux = pFirst;
-        while (aux != pLast) {
-            cadena += Character.class.cast(aux.getElemento()).getId() + " --> ";
+        while (aux != null) {
+            cadena += aux.getElemento().getId() + " --> ";
             aux = aux.getpNext();
         }
-        cadena += Character.class.cast(aux.getElemento()).getId();
-        return cadena;
-    }
-    
-    /**
-     * Método que devuelve el primer nodo de la cola
-     * @return pFirst de la cola
-     */
-    public Nodo<T> getpFirst() {
-        return pFirst;
+        return cadena.substring(0, cadena.length()-5);
     }
 
-    /**
-     * Método que asigna el primer nodo de la cola
-     * @param pFirst el pfirst a ser asignado
-     */
-    public void setpFirst(Nodo<T> pFirst) {
+    public Nodo getpFirst() {
+        return pFirst;
+    }
+    
+    public void setpFirst(Nodo pFirst) {
         this.pFirst = pFirst;
     }
 
-    /**
-     * Método que devuelve el último nodo de la cola
-     * @return pLast de la cola
-     */
-    public Nodo<T> getpLast() {
+    public Nodo getpLast() {
         return pLast;
     }
 
-    /**
-     * Método que asigna el último nodo de la cola
-     * @param pLast el Plast a ser asignado
-     */
-    public void setpLast(Nodo<T> pLast) {
+    public void setpLast(Nodo pLast) {
         this.pLast = pLast;
     }
 
-    /**
-     * Método que retorna el tamaño de la cola
-     * @return tamaño de la cola
-     */
     public int getSize() {
         return size;
     }
 
-    /**
-     * Método que asigna el tamaño de la cola
-     * @param size el tamaño a ser asignado
-     */
     public void setSize(int size) {
         this.size = size;
     }

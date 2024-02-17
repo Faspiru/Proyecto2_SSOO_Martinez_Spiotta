@@ -18,11 +18,8 @@ public class Character {
     private int vida;
     private int fuerza;
     private int agilidad;
-    private int hCalidad;
-    private int vCalidad;
-    private int fCalidad;
-    private int aCalidad;
     private String imgRoute;
+    private int counter;
 
     public Character(String idString, int idNumber, String nameCharacter, int habilidades, int vida, int fuerza, int agilidad, String imgRoute) {
         this.id = idString + idNumber;
@@ -31,35 +28,28 @@ public class Character {
         this.vida = vida;
         this.fuerza = fuerza;
         this.agilidad = agilidad;
-        this.hCalidad = 0;
-        this.vCalidad = 0;
-        this.fCalidad = 0;
-        this.aCalidad = 0;
+        this.type = "";
         this.imgRoute = imgRoute;
+        this.counter = 0;
         
         calculateType();
     }
     
-    public void calculateType() {
-        double numberH = Math.random();
-        double numberV = Math.random();
-        double numberF = Math.random();
-        double numberA = Math.random();
+    public void calculateType() {        
+        int sumaTotal = 0;
         
-        if (numberH <= 0.6) {
-            sethCalidad(gethCalidad() + 1);
+        if (habilidades >= 500){
+            sumaTotal += 1;
+        } 
+        if (vida >= 500){
+            sumaTotal += 1;
         }
-        if (numberV <= 0.7) {
-            setvCalidad(getvCalidad() + 1);
+        if (fuerza >= 500){
+            sumaTotal += 1;
         }
-        if (numberF <= 0.5) {
-            setfCalidad(getfCalidad() + 1);
+        if (agilidad >= 500){
+            sumaTotal += 1;
         }
-        if (numberA <= 0.4) {
-            setaCalidad(getaCalidad() + 1);
-        }
-        
-        int sumaTotal = gethCalidad() + getvCalidad() + getfCalidad() + getaCalidad();
         
         if (sumaTotal == 4) {
             setPriorityLevel(1);
@@ -72,6 +62,14 @@ public class Character {
         else {
             setPriorityLevel(3);
             setType("Deficiente");
+        }
+    }
+    
+    public void restart(){
+        this.counter = 0;
+        
+        if (priorityLevel != 1){
+            priorityLevel -= 1;
         }
     }
 
@@ -188,62 +186,6 @@ public class Character {
     }
 
     /**
-     * @return the hCalidad
-     */
-    public int gethCalidad() {
-        return hCalidad;
-    }
-
-    /**
-     * @param hCalidad the hCalidad to set
-     */
-    public void sethCalidad(int hCalidad) {
-        this.hCalidad = hCalidad;
-    }
-
-    /**
-     * @return the vCalidad
-     */
-    public int getvCalidad() {
-        return vCalidad;
-    }
-
-    /**
-     * @param vCalidad the vCalidad to set
-     */
-    public void setvCalidad(int vCalidad) {
-        this.vCalidad = vCalidad;
-    }
-
-    /**
-     * @return the fCalidad
-     */
-    public int getfCalidad() {
-        return fCalidad;
-    }
-
-    /**
-     * @param fCalidad the fCalidad to set
-     */
-    public void setfCalidad(int fCalidad) {
-        this.fCalidad = fCalidad;
-    }
-
-    /**
-     * @return the aCalidad
-     */
-    public int getaCalidad() {
-        return aCalidad;
-    }
-
-    /**
-     * @param aCalidad the aCalidad to set
-     */
-    public void setaCalidad(int aCalidad) {
-        this.aCalidad = aCalidad;
-    }
-
-    /**
      * @return the imgRoute
      */
     public String getImgRoute() {
@@ -255,6 +197,14 @@ public class Character {
      */
     public void setImgRoute(String imgRoute) {
         this.imgRoute = imgRoute;
+    }
+    
+    public int getCounter(){
+        return counter;
+    }
+    
+    public void setCounter(int counter){
+        this.counter =counter;
     }
     
     

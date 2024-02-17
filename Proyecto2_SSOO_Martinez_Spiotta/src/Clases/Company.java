@@ -52,6 +52,14 @@ public class Company {
         this.colaBaja = colaBaja;
     }
 
+    public Queue getColaRefuerzo() {
+        return colaRefuerzo;
+    }
+
+    public void setColaRefuerzo(Queue colaRefuerzo) {
+        this.colaRefuerzo = colaRefuerzo;
+    }
+
     public String[] getArrayCharacters() {
         return arrayCharacters;
     }

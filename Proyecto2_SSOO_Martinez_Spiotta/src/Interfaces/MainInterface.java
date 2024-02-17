@@ -4,8 +4,10 @@
  */
 package Interfaces;
 
+import Clases.ArtificialIntelligence;
 import Clases.Company;
 import Clases.OS;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -24,18 +26,13 @@ public class MainInterface extends javax.swing.JFrame {
         
         this.nickelodeon = nickelodeon;
         this.cartoonNetwork = cartoonNetwork;
+        Semaphore mutex = new Semaphore(1);
+        Semaphore mutex2 = new Semaphore(1);
+        Semaphore mutex3 = new Semaphore(1);
+        ArtificialIntelligence ai = new ArtificialIntelligence(mutex, mutex2, mutex3);
            
-        OS so = new OS(nickelodeon, cartoonNetwork);
-        
-        so.generateCharacterAvatar();
-        so.generateCharacterAvatar();
-        so.generateCharacterAvatar();
-        so.generateCharacterAvatar();
-        so.generateCharacterAvatar();
-        System.out.println("hola");
-        String cadena = nickelodeon.getColaMedia().converterToString();
-        System.out.println(cadena);
-        
+        OS so = new OS(nickelodeon, cartoonNetwork, ai, mutex, mutex2, mutex3);
+       
     }
 
     /**
