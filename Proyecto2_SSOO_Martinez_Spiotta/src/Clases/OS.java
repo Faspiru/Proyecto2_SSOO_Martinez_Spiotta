@@ -48,46 +48,79 @@ public class OS extends Thread{
         this.mutex3 = mutex3;
         this.batles = 0;
         generate();
+        System.out.println("Prioridad Alta --> ");
+        System.out.println(nickelodeon.getColaAlta().converterToString());
+        System.out.println(cartoonNetwork.getColaAlta().converterToString());
+        System.out.println("\nPrioridad Media --> ");
+        System.out.println(nickelodeon.getColaMedia().converterToString());
+        System.out.println(cartoonNetwork.getColaMedia().converterToString());
+        System.out.println("\nPrioridad Baja --> ");
+        System.out.println(nickelodeon.getColaBaja().converterToString());
+        System.out.println(cartoonNetwork.getColaBaja().converterToString());
+        ai.start();
     }
     
     @Override
     public void run(){
         while(true) {
-            if (rounds == 8){
-                rounds = 0;
-                double percentage = Math.random();
-                
-                if (percentage <= 0.8){
-                    generateCharacterAvatar();
-                    generateCharacterUnShowMas();
+            try {  
+                if (rounds == 8){
+                    rounds = 0;
+                    double percentage = Math.random();
+
+                    if (percentage <= 0.8){
+                        generateCharacterAvatar();
+                        generateCharacterUnShowMas();
+                    }
                 }
-            }
-            
-            if (statusAI("Esperando")){
-                choose(nickelodeon, chosenOneA);
-                choose(cartoonNetwork, chosenOneU);
-                ai.setAvatar(chosenOneA);
-                ai.setUnShowMas(chosenOneU);
-                setStatusAI("Decidiendo");
-                rounds += 1;
-                batles += 1;
-                
-            } else if (battlesAI()){
-                int result = resultAI();
-                
-                if (result == 1){
-                    ganadores.encolar(ai.getGanador());
-                } else if (result == 2){
-                    nickelodeon.getColaAlta().encolar(chosenOneA);
-                    cartoonNetwork.getColaAlta().encolar(chosenOneU);
-                } else {
-                    nickelodeon.getColaRefuerzo().encolar(chosenOneA);
-                    cartoonNetwork.getColaRefuerzo().encolar(chosenOneU);
+
+                if (statusAI("Esperando")){
+                    chosenOneA = choose(nickelodeon);
+                    chosenOneU = choose(cartoonNetwork);
+                    ai.setAvatar(chosenOneA);
+                    ai.setUnShowMas(chosenOneU);
+                    setStatusAI("Decidiendo");
+                    rounds += 1;
+                    batles += 1;
+
+                    while(true){
+                        if (battlesAI()){
+                            int result = resultAI();
+
+                            if (result == 1){
+                                ganadores.encolar(ai.getGanador());
+                            } else if (result == 2){
+                                nickelodeon.getColaAlta().encolar(chosenOneA);
+                                cartoonNetwork.getColaAlta().encolar(chosenOneU);
+                            } else {
+                                nickelodeon.getColaRefuerzo().encolar(chosenOneA);
+                                cartoonNetwork.getColaRefuerzo().encolar(chosenOneU);
+                            }
+                            System.out.println("\nPrioridad Alta --> ");
+                            System.out.println(nickelodeon.getColaAlta().converterToString());
+                            System.out.println(cartoonNetwork.getColaAlta().converterToString());
+                            System.out.println("\nPrioridad Media --> ");
+                            System.out.println(nickelodeon.getColaMedia().converterToString());
+                            System.out.println(cartoonNetwork.getColaMedia().converterToString());
+                            System.out.println("\nPrioridad Baja --> ");
+                            System.out.println(nickelodeon.getColaBaja().converterToString());
+                            System.out.println(cartoonNetwork.getColaBaja().converterToString());
+                            System.out.println("\nRefuerzo --> ");
+                            System.out.println(nickelodeon.getColaRefuerzo().converterToString());
+                            System.out.println(cartoonNetwork.getColaRefuerzo().converterToString());
+                            System.out.println("\nGanadores --> ");
+                            System.out.println(ganadores.converterToString());
+                            break;
+                        }
+                    }
                 }
+
+                manejoColaRefuerzo(nickelodeon);
+                manejoColaRefuerzo(cartoonNetwork);
+                sleep(0);
+            } catch (InterruptedException ex) {
+                Logger.getLogger("").log(Level.SEVERE, null, ex);
             }
-            
-            manejoColaRefuerzo(nickelodeon);
-            manejoColaRefuerzo(cartoonNetwork);
         }
     }
     
@@ -139,8 +172,9 @@ public class OS extends Thread{
     }
     
     
-    public void choose(Company company, Character chosenOne){
+    public Character choose(Company company){
         boolean exist = false;
+        Character chosenOne = null;
         
         while (!exist){
             if (!company.getColaAlta().esVacia()){
@@ -156,6 +190,8 @@ public class OS extends Thread{
                 generateCharacterAvatar();
             }
         }
+        
+        return chosenOne;
     }
     
     public void generate(){

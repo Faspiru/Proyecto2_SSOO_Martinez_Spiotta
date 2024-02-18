@@ -69,7 +69,7 @@ public class Queue {
             cadena += aux.getElemento().getId() + " --> ";
             aux = aux.getpNext();
         }
-        return cadena.substring(0, cadena.length()-5);
+        return cadena; //.substring(0, cadena.length()-5);
     }
 
     public Nodo getpFirst() {

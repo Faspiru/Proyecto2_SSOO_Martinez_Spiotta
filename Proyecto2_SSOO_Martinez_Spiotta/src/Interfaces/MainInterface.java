@@ -32,6 +32,7 @@ public class MainInterface extends javax.swing.JFrame {
         ArtificialIntelligence ai = new ArtificialIntelligence(mutex, mutex2, mutex3);
            
         OS so = new OS(nickelodeon, cartoonNetwork, ai, mutex, mutex2, mutex3);
+        so.start();
        
     }
 

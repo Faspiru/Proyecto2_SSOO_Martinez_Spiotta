@@ -32,7 +32,7 @@ public class ArtificialIntelligence extends Thread{
         int result = 0;
         int batles = 0;
         this.status = "Esperando";
-        this.duration = 10000;
+        this.duration = 3000;
         this.mutex = mutex;
         this.mutex2 = mutex2;
         this.mutex3 = mutex3;
@@ -46,9 +46,8 @@ public class ArtificialIntelligence extends Thread{
                     work();
                     sleep(duration);
                     setStatusAI("Anunciando");
-                    show();
+                    //show();
                     setStatusAI("Esperando");
-                    battlesAI();
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger("").log(Level.SEVERE, null, ex);
@@ -96,33 +95,58 @@ public class ArtificialIntelligence extends Thread{
             double percentage = Math.random();
             if (percentage <= 0.4) { // 40% de probabilidad de ganar 
                 decision();
+                System.out.println("\nGanador --> " + ganador.getId());
                 result = 1;
             } else if (percentage <= 0.67){ // 27% de probabilidad de empatar
                 result = 2;
             } else { // 33% de probabilidad de anular
                 result = 3;
             }
+            System.out.println("\nResultado --> " + result);
             mutex3.release(); // signal
         } catch (InterruptedException ex) {
             Logger.getLogger("").log(Level.SEVERE, null, ex);
         }
+        battlesAI();
     }
     
     public void decision(){
+        int puntosa = 0;
+        int puntosu = 0;
+        
+        // Indice de Combate
         double ica = (0.3*avatar.getFuerza()) + (0.3*avatar.getVida()) + (0.2*avatar.getAgilidad()) + (0.2*avatar.getHabilidades());
         double icu = (0.3*unShowMas.getFuerza()) + (0.3*unShowMas.getVida()) + (0.2*unShowMas.getAgilidad()) + (0.2*unShowMas.getHabilidades());
         
         if (ica > icu){
-            ganador = avatar;
+            puntosa += 1;
         } else if (icu > ica) {
-            ganador = unShowMas;
+            puntosu += 1;
         } else {
             double aleatorio = Math.random()*3;
             
             if (aleatorio <= 1){
+                puntosa += 1;
+            } else {
+                puntosu += 1;
+            }
+        }
+        
+        
+        // Indice de Suerte
+        double suerte = Math.random()*1.5;
+        
+        if (puntosa > puntosu){
+            if (puntosa >= suerte){
                 ganador = avatar;
             } else {
                 ganador = unShowMas;
+            }
+        } else {
+            if (puntosu >= suerte){
+                ganador = unShowMas;
+            } else {
+                ganador = avatar;
             }
         }
         
