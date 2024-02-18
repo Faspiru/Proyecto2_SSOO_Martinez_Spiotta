@@ -96,23 +96,12 @@ public class ArtificialIntelligence extends Thread{
             double percentage = Math.random();
             if (percentage <= 0.4) { // 40% de probabilidad de ganar 
                 decision();
-                System.out.println("\nGanador --> " + ganador.getId());
                 result = 1;
             } else if (percentage <= 0.67){ // 27% de probabilidad de empatar
                 result = 2;
             } else { // 33% de probabilidad de anular
                 result = 3;
             }
-//              // Se supone que si AI esta aqui es porque SO esta esperando, por lo que no puede haber inconsistencias
-//            avatar.setCounter(avatar.getCounter() + 1);
-//            unShowMas.setCounter(unShowMas.getCounter() + 1);
-//        
-//            if (avatar.getCounter() == 8){
-//                avatar.restart();
-//            }
-//            if (unShowMas.getCounter() == 8){
-//                unShowMas.restart();
-//            }
             System.out.println("\nResultado --> " + result);
             mutex3.release(); // signal
         } catch (InterruptedException ex) {

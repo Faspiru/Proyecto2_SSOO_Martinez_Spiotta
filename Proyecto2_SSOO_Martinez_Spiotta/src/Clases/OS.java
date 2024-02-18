@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import EstructurasDeDatos.Nodo;
 import EstructurasDeDatos.Queue;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
@@ -96,6 +97,7 @@ public class OS extends Thread{
                                 nickelodeon.getColaRefuerzo().encolar(chosenOneA);
                                 cartoonNetwork.getColaRefuerzo().encolar(chosenOneU);
                             }
+                            System.out.println("\n\n ROUND --> " + batles);
                             System.out.println("\nPrioridad Alta --> ");
                             System.out.println(nickelodeon.getColaAlta().converterToString());
                             System.out.println(cartoonNetwork.getColaAlta().converterToString());
@@ -111,8 +113,18 @@ public class OS extends Thread{
                             System.out.println("\nGanadores --> ");
                             System.out.println(ganadores.converterToString());
                             
-                            // Aqui es el manejo de colas 
-                            
+                            System.out.println("\nNO INANICION -->");
+                            modi(nickelodeon);
+                            modi(cartoonNetwork);
+                            System.out.println("\nPrioridad Alta --> ");
+                            System.out.println(nickelodeon.getColaAlta().converterToString());
+                            System.out.println(cartoonNetwork.getColaAlta().converterToString());
+                            System.out.println("\nPrioridad Media --> ");
+                            System.out.println(nickelodeon.getColaMedia().converterToString());
+                            System.out.println(cartoonNetwork.getColaMedia().converterToString());
+                            System.out.println("\nPrioridad Baja --> ");
+                            System.out.println(nickelodeon.getColaBaja().converterToString());
+                            System.out.println(cartoonNetwork.getColaBaja().converterToString());
                             
                             break;
                         }
@@ -306,9 +318,34 @@ public class OS extends Thread{
     }
     
     public void modi(Company company){
-        // Recorrido cola media y baja
-        // Personajen --> if counter == 8 --> DesencolarValor, Restart, Condicionales de prioridad para encolar (estan en genearte())
-        // Aumentas counter de c/character
-        
+        // Cola Media
+        int size = company.getColaMedia().getSize();
+        int i = 0;
+        Nodo aux = company.getColaMedia().getpFirst();
+        while (i < size) {
+            if (aux.getElemento().getCounter() == 8){
+                Character personaje = company.getColaMedia().desencolarCharacter(aux.getElemento().getId()).getElemento();
+                personaje.restart();
+                company.getColaAlta().encolar(personaje);
+                size -= 1;
+            } else {
+                aux.getElemento().setCounter(aux.getElemento().getCounter() + 1);
+                i += 1;
+            }
+            aux = aux.getpNext();
+        }
+       
+        // Cola Baja
+        aux = company.getColaBaja().getpFirst();
+        while (aux != null) {
+            if (aux.getElemento().getCounter() == 8){
+                Character personaje = company.getColaBaja().desencolarCharacter(aux.getElemento().getId()).getElemento();
+                personaje.restart();
+                company.getColaMedia().encolar(personaje);
+            }else {
+                aux.getElemento().setCounter(aux.getElemento().getCounter() + 1);
+            }
+            aux = aux.getpNext();
+        }
     }
 }

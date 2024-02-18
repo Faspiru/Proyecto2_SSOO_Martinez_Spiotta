@@ -71,11 +71,15 @@ public class Queue {
         return cadena; //.substring(0, cadena.length()-5);
     }
     
-    public void desencolarCharacter(String dato){  
+    public Nodo desencolarCharacter(String dato){  
         int times = 0;
+        Nodo auxEliminado = null;
+        Nodo aux = pFirst;
+        int sizeM = getSize();
+        int i = 0;
         
-        for (int i = 0; i < size+1; i++){
-            Nodo aux = pFirst;
+        while(i < sizeM){
+            aux = pFirst;
             String eliminado = aux.getElemento().getId();
             desencolar();
             if (!eliminado.equals(dato)){
@@ -84,9 +88,13 @@ public class Queue {
                 encolar(aux.getElemento());
             } else {
                 times = 1;
-            }
-            
+                auxEliminado = aux;
+                sizeM -= 1;
+            }     
+            i ++;
         }  
+        
+        return auxEliminado;
     }
 
     public Nodo getpFirst() {
