@@ -32,7 +32,7 @@ public class ArtificialIntelligence extends Thread{
         int result = 0;
         int batles = 0;
         this.status = "Esperando";
-        this.duration = 3000;
+        this.duration = 3000; // Cambiar a 10000
         this.mutex = mutex;
         this.mutex2 = mutex2;
         this.mutex3 = mutex3;
@@ -46,7 +46,8 @@ public class ArtificialIntelligence extends Thread{
                     work();
                     sleep(duration);
                     setStatusAI("Anunciando");
-                    //show();
+                    sleep(4000); // Revisar
+                    // show();
                     setStatusAI("Esperando");
                 }
             } catch (InterruptedException ex) {
@@ -102,6 +103,16 @@ public class ArtificialIntelligence extends Thread{
             } else { // 33% de probabilidad de anular
                 result = 3;
             }
+//              // Se supone que si AI esta aqui es porque SO esta esperando, por lo que no puede haber inconsistencias
+//            avatar.setCounter(avatar.getCounter() + 1);
+//            unShowMas.setCounter(unShowMas.getCounter() + 1);
+//        
+//            if (avatar.getCounter() == 8){
+//                avatar.restart();
+//            }
+//            if (unShowMas.getCounter() == 8){
+//                unShowMas.restart();
+//            }
             System.out.println("\nResultado --> " + result);
             mutex3.release(); // signal
         } catch (InterruptedException ex) {
@@ -148,19 +159,7 @@ public class ArtificialIntelligence extends Thread{
             } else {
                 ganador = avatar;
             }
-        }
-        
-        // Se supone que si AI esta aqui es porque SO esta esperando, por lo que no puede haber inconsistencias
-        avatar.setCounter(avatar.getCounter() + 1);
-        unShowMas.setCounter(unShowMas.getCounter() + 1);
-        
-        if (avatar.getCounter() == 8){
-            avatar.restart();
-        }
-        if (unShowMas.getCounter() == 8){
-            unShowMas.restart();
-        }
-        
+        }       
     }
     
     public void show(){

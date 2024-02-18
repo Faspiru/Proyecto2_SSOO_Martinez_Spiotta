@@ -25,7 +25,6 @@ public class Queue {
         }
         return false;
     }
-    
 
     public void destructor() {
         while(pFirst!= null) {
@@ -70,6 +69,24 @@ public class Queue {
             aux = aux.getpNext();
         }
         return cadena; //.substring(0, cadena.length()-5);
+    }
+    
+    public void desencolarCharacter(String dato){  
+        int times = 0;
+        
+        for (int i = 0; i < size+1; i++){
+            Nodo aux = pFirst;
+            String eliminado = aux.getElemento().getId();
+            desencolar();
+            if (!eliminado.equals(dato)){
+                encolar(aux.getElemento());
+            } else if (times == 1){
+                encolar(aux.getElemento());
+            } else {
+                times = 1;
+            }
+            
+        }  
     }
 
     public Nodo getpFirst() {

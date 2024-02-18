@@ -64,7 +64,7 @@ public class OS extends Thread{
     public void run(){
         while(true) {
             try {  
-                if (rounds == 8){
+                if (rounds == 2){
                     rounds = 0;
                     double percentage = Math.random();
 
@@ -110,6 +110,10 @@ public class OS extends Thread{
                             System.out.println(cartoonNetwork.getColaRefuerzo().converterToString());
                             System.out.println("\nGanadores --> ");
                             System.out.println(ganadores.converterToString());
+                            
+                            // Aqui es el manejo de colas 
+                            
+                            
                             break;
                         }
                     }
@@ -280,6 +284,7 @@ public class OS extends Thread{
                 nuevo.setAgilidad(a);
                 nuevo.setHabilidades(h);
                 nuevo.setVida(v);
+                nuevo.setPriorityLevel(1);
                 
                 company.getColaAlta().encolar(nuevo);
             }else {
@@ -298,5 +303,12 @@ public class OS extends Thread{
         } else {
             return upgrade;
         }
+    }
+    
+    public void modi(Company company){
+        // Recorrido cola media y baja
+        // Personajen --> if counter == 8 --> DesencolarValor, Restart, Condicionales de prioridad para encolar (estan en genearte())
+        // Aumentas counter de c/character
+        
     }
 }

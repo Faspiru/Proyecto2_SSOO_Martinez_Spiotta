@@ -67,10 +67,7 @@ public class Character {
     
     public void restart(){
         this.counter = 0;
-        
-        if (priorityLevel != 1){
-            priorityLevel -= 1;
-        }
+        priorityLevel -= 1;
     }
 
     /**
