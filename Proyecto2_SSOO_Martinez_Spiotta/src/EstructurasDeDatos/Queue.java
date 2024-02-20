@@ -1,6 +1,8 @@
 package EstructurasDeDatos;
 
 import Clases.Character;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  *
@@ -61,14 +63,38 @@ public class Queue {
         return element;
     }
     
-    public String converterToString() {
+    public String converterToStringCartoon() {
         String cadena = "";
-        Nodo aux = pFirst;
-        while (aux != null) {
-            cadena += aux.getElemento().getId() + " --> ";
-            aux = aux.getpNext();
-        }
+        if (this.esVacia()) {
+            cadena += "Cola Vacia!";
+        } else {
+            Nodo aux = pFirst;
+            while (aux != pLast) {
+                cadena += aux.getElemento().getId() + " <-- ";
+                aux = aux.getpNext();
+            }
+            cadena += aux.getElemento().getId();
+        } 
         return cadena; //.substring(0, cadena.length()-5);
+    }
+    
+    public String converterToStringNick() {
+        String cadena = "";
+        if (this.esVacia()) {
+            cadena += "Cola Vacia!";
+        } else {
+            Nodo aux = pFirst;
+            while (aux != pLast) {
+                cadena += aux.getElemento().getId() + " <-- ";
+                aux = aux.getpNext();
+            }
+            cadena += aux.getElemento().getId();
+        } 
+        
+        String [] groups = cadena.split(" <-- ");
+        Collections.reverse(Arrays.asList(groups));
+        String resultado = String.join(" --> ", groups);
+        return resultado; //.substring(0, cadena.length()-5);
     }
     
     public Nodo desencolarCharacter(String dato){  

@@ -8,6 +8,9 @@ import Clases.ArtificialIntelligence;
 import Clases.Company;
 import Clases.OS;
 import java.util.concurrent.Semaphore;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -30,8 +33,18 @@ public class MainInterface extends javax.swing.JFrame {
         Semaphore mutex2 = new Semaphore(1);
         Semaphore mutex3 = new Semaphore(1);
         ArtificialIntelligence ai = new ArtificialIntelligence(mutex, mutex2, mutex3);
+        
+        JTextArea [] textAreasArray = {colaAltaNickTextArea, colaMediaNickTextArea, colaBajaNickTextArea, colaRefuerzoNickTextArea, colaAltaCartoonTextArea, colaMediaCartoonTextArea, colaBajaCartoonTextArea, colaRefuerzoCartoonTextArea};
+        JLabel [] labelsArray = {imgLabelNick, imgLabelCartoon, avatarCharacterNameLabel, AILabel, vidaAvatarLabel, fuerzaAvatarLabel, habilidadesAvatarLabel, agilidadAvatarLabel, vidaUnShowMasLabel, fuerzaUnShowMasLabel, habilidadesUnShowMasLabel, agilidadUnShowMasLabel, AILabel};
+        
+        ai.setLabels(labelsArray);
+        
+//        ImageIcon icon = new ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/mordecai.gif");
+//        imgLabelCartoon.setIcon(icon);
            
         OS so = new OS(nickelodeon, cartoonNetwork, ai, mutex, mutex2, mutex3);
+        so.setTextAreas(textAreasArray);
+        so.setLabels(labelsArray);
         so.start();
        
     }
@@ -46,31 +59,501 @@ public class MainInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        colaAltaNickTextArea = new javax.swing.JTextArea();
+        colaMediaNickTextArea = new javax.swing.JTextArea();
+        colaRefuerzoNickTextArea = new javax.swing.JTextArea();
+        colaBajaNickTextArea = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        colaBajaCartoonTextArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        colaMediaCartoonTextArea = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        colaAltaCartoonTextArea = new javax.swing.JTextArea();
+        colaRefuerzoCartoonTextArea = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        AILabel = new javax.swing.JLabel();
+        labelAI2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        vidaAvatarLabel = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        statsLabel10 = new javax.swing.JLabel();
+        statsLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        fuerzaAvatarLabel = new javax.swing.JLabel();
+        habilidadesAvatarLabel = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        statsLabel5 = new javax.swing.JLabel();
+        statsLabel3 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        agilidadAvatarLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        imgLabelNick = new javax.swing.JLabel();
+        avatarCharacterNameLabel = new javax.swing.JLabel();
+        statsLabel2 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        imgLabelCartoon = new javax.swing.JLabel();
+        statsLabel = new javax.swing.JLabel();
+        vidaUnShowMasLabel = new javax.swing.JLabel();
+        fuerzaUnShowMasLabel = new javax.swing.JLabel();
+        habilidadesUnShowMasLabel = new javax.swing.JLabel();
+        agilidadUnShowMasLabel = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        statsLabel6 = new javax.swing.JLabel();
+        statsLabel8 = new javax.swing.JLabel();
+        statsLabel9 = new javax.swing.JLabel();
+        statsLabel7 = new javax.swing.JLabel();
+        unShowMasCharacterNameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Dimelo men");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
+        jPanel5.setBackground(new java.awt.Color(153, 102, 0));
+        jPanel5.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Cola Alta Prioridad:");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Cola Media Prioridad:");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Cola Baja Prioridad:");
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Cola de Refuerzo:");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
+
+        colaAltaNickTextArea.setEditable(false);
+        colaAltaNickTextArea.setBackground(new java.awt.Color(242, 176, 115));
+        colaAltaNickTextArea.setColumns(20);
+        colaAltaNickTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaAltaNickTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaAltaNickTextArea.setLineWrap(true);
+        colaAltaNickTextArea.setRows(5);
+        colaAltaNickTextArea.setWrapStyleWord(true);
+        colaAltaNickTextArea.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel5.add(colaAltaNickTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 350, 60));
+
+        colaMediaNickTextArea.setEditable(false);
+        colaMediaNickTextArea.setBackground(new java.awt.Color(242, 176, 115));
+        colaMediaNickTextArea.setColumns(20);
+        colaMediaNickTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaMediaNickTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaMediaNickTextArea.setLineWrap(true);
+        colaMediaNickTextArea.setRows(5);
+        colaMediaNickTextArea.setWrapStyleWord(true);
+        jPanel5.add(colaMediaNickTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 350, 60));
+
+        colaRefuerzoNickTextArea.setEditable(false);
+        colaRefuerzoNickTextArea.setBackground(new java.awt.Color(242, 176, 115));
+        colaRefuerzoNickTextArea.setColumns(20);
+        colaRefuerzoNickTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaRefuerzoNickTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaRefuerzoNickTextArea.setLineWrap(true);
+        colaRefuerzoNickTextArea.setRows(5);
+        colaRefuerzoNickTextArea.setWrapStyleWord(true);
+        jPanel5.add(colaRefuerzoNickTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 350, 60));
+
+        colaBajaNickTextArea.setEditable(false);
+        colaBajaNickTextArea.setBackground(new java.awt.Color(242, 176, 115));
+        colaBajaNickTextArea.setColumns(20);
+        colaBajaNickTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaBajaNickTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaBajaNickTextArea.setLineWrap(true);
+        colaBajaNickTextArea.setRows(5);
+        colaBajaNickTextArea.setWrapStyleWord(true);
+        jPanel5.add(colaBajaNickTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 350, 60));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/AvatarLogo.png")); // NOI18N
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/avatarPosterFondo.png")); // NOI18N
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 590));
+
+        jPanel6.setBackground(new java.awt.Color(102, 102, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        colaBajaCartoonTextArea.setEditable(false);
+        colaBajaCartoonTextArea.setBackground(new java.awt.Color(230, 238, 91));
+        colaBajaCartoonTextArea.setColumns(20);
+        colaBajaCartoonTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaBajaCartoonTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaBajaCartoonTextArea.setLineWrap(true);
+        colaBajaCartoonTextArea.setRows(5);
+        colaBajaCartoonTextArea.setToolTipText("");
+        colaBajaCartoonTextArea.setWrapStyleWord(true);
+        jPanel6.add(colaBajaCartoonTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 390, 350, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/UnShoMasLogo.png")); // NOI18N
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, -20, -1, 150));
+
+        colaMediaCartoonTextArea.setEditable(false);
+        colaMediaCartoonTextArea.setBackground(new java.awt.Color(230, 238, 91));
+        colaMediaCartoonTextArea.setColumns(20);
+        colaMediaCartoonTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaMediaCartoonTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaMediaCartoonTextArea.setLineWrap(true);
+        colaMediaCartoonTextArea.setRows(5);
+        colaMediaCartoonTextArea.setToolTipText("");
+        colaMediaCartoonTextArea.setWrapStyleWord(true);
+        jPanel6.add(colaMediaCartoonTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 290, 350, 60));
+
+        jLabel7.setBackground(new java.awt.Color(153, 102, 0));
+        jLabel7.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Cola Media Prioridad:");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+
+        colaAltaCartoonTextArea.setEditable(false);
+        colaAltaCartoonTextArea.setBackground(new java.awt.Color(230, 238, 91));
+        colaAltaCartoonTextArea.setColumns(20);
+        colaAltaCartoonTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaAltaCartoonTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaAltaCartoonTextArea.setLineWrap(true);
+        colaAltaCartoonTextArea.setRows(5);
+        colaAltaCartoonTextArea.setWrapStyleWord(true);
+        jPanel6.add(colaAltaCartoonTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 190, 350, 60));
+
+        colaRefuerzoCartoonTextArea.setEditable(false);
+        colaRefuerzoCartoonTextArea.setBackground(new java.awt.Color(230, 238, 91));
+        colaRefuerzoCartoonTextArea.setColumns(20);
+        colaRefuerzoCartoonTextArea.setFont(new java.awt.Font("PT Sans", 1, 12)); // NOI18N
+        colaRefuerzoCartoonTextArea.setForeground(new java.awt.Color(0, 0, 0));
+        colaRefuerzoCartoonTextArea.setLineWrap(true);
+        colaRefuerzoCartoonTextArea.setRows(5);
+        colaRefuerzoCartoonTextArea.setToolTipText("");
+        colaRefuerzoCartoonTextArea.setWrapStyleWord(true);
+        jPanel6.add(colaRefuerzoCartoonTextArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 490, 350, 60));
+
+        jLabel8.setBackground(new java.awt.Color(153, 102, 0));
+        jLabel8.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Cola Baja Prioridad:");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
+
+        jLabel6.setBackground(new java.awt.Color(153, 102, 0));
+        jLabel6.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Cola Alta Prioridad:");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+
+        jLabel9.setBackground(new java.awt.Color(153, 102, 0));
+        jLabel9.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Cola de Refuerzo:");
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/unShowMasPosterFondo.png")); // NOI18N
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 390, 590));
+        jPanel6.getAccessibleContext().setAccessibleName("");
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/versus.gif")); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 210, -1));
+
+        AILabel.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        AILabel.setForeground(new java.awt.Color(0, 0, 0));
+        AILabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AILabel.setText("Esperando");
+        jPanel1.add(AILabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 100));
+
+        labelAI2.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        labelAI2.setForeground(new java.awt.Color(0, 0, 0));
+        labelAI2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAI2.setText("ARTIFICIAL INTELLIGENCE STATUS");
+        jPanel1.add(labelAI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 40));
+
+        jPanel7.setBackground(new java.awt.Color(153, 102, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        vidaAvatarLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        vidaAvatarLabel.setForeground(new java.awt.Color(0, 0, 0));
+        vidaAvatarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vidaAvatarLabel.setText("STAT");
+        jPanel7.add(vidaAvatarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 80, 20));
+
+        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel13.setText("--> ");
+        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, -1, -1));
+
+        statsLabel10.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        statsLabel10.setText("VIDA ");
+        jPanel7.add(statsLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 110, 20));
+
+        statsLabel4.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        statsLabel4.setText("FUERZA");
+        jPanel7.add(statsLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 110, 20));
+
+        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel12.setText("--> ");
+        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, -1, -1));
+
+        fuerzaAvatarLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        fuerzaAvatarLabel.setForeground(new java.awt.Color(0, 0, 0));
+        fuerzaAvatarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fuerzaAvatarLabel.setText("STAT");
+        jPanel7.add(fuerzaAvatarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 80, 20));
+
+        habilidadesAvatarLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        habilidadesAvatarLabel.setForeground(new java.awt.Color(0, 0, 0));
+        habilidadesAvatarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        habilidadesAvatarLabel.setText("STAT ");
+        jPanel7.add(habilidadesAvatarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 80, 20));
+
+        jLabel15.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel15.setText("--> ");
+        jPanel7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, -1, -1));
+
+        statsLabel5.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        statsLabel5.setText("HABILIDADES");
+        jPanel7.add(statsLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 500, 110, 20));
+
+        statsLabel3.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        statsLabel3.setText("AGILIDAD");
+        jPanel7.add(statsLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 530, 110, 20));
+
+        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel14.setText("--> ");
+        jPanel7.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, -1, -1));
+
+        agilidadAvatarLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        agilidadAvatarLabel.setForeground(new java.awt.Color(0, 0, 0));
+        agilidadAvatarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agilidadAvatarLabel.setText("STAT ");
+        jPanel7.add(agilidadAvatarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 80, 20));
+
+        jPanel3.setBackground(new java.awt.Color(242, 176, 115));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgLabelNick.setForeground(new java.awt.Color(0, 0, 0));
+        imgLabelNick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(imgLabelNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 230));
+
+        jPanel7.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 210, 250));
+
+        avatarCharacterNameLabel.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        avatarCharacterNameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        avatarCharacterNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        avatarCharacterNameLabel.setText("AVATAR NAME");
+        jPanel7.add(avatarCharacterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 20));
+
+        statsLabel2.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        statsLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statsLabel2.setText("ESTADísticas");
+        jPanel7.add(statsLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 570));
+
+        jPanel8.setBackground(new java.awt.Color(102, 102, 0));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(230, 238, 91));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        imgLabelCartoon.setForeground(new java.awt.Color(0, 0, 0));
+        imgLabelCartoon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(imgLabelCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 230));
+
+        jPanel8.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 210, 250));
+
+        statsLabel.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        statsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statsLabel.setText("ESTADísticas");
+        jPanel8.add(statsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 190, 20));
+
+        vidaUnShowMasLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        vidaUnShowMasLabel.setForeground(new java.awt.Color(0, 0, 0));
+        vidaUnShowMasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vidaUnShowMasLabel.setText("STAT");
+        jPanel8.add(vidaUnShowMasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 80, -1));
+
+        fuerzaUnShowMasLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        fuerzaUnShowMasLabel.setForeground(new java.awt.Color(0, 0, 0));
+        fuerzaUnShowMasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fuerzaUnShowMasLabel.setText("STAT ");
+        jPanel8.add(fuerzaUnShowMasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 80, -1));
+
+        habilidadesUnShowMasLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        habilidadesUnShowMasLabel.setForeground(new java.awt.Color(0, 0, 0));
+        habilidadesUnShowMasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        habilidadesUnShowMasLabel.setText("STAT ");
+        jPanel8.add(habilidadesUnShowMasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 80, -1));
+
+        agilidadUnShowMasLabel.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        agilidadUnShowMasLabel.setForeground(new java.awt.Color(0, 0, 0));
+        agilidadUnShowMasLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agilidadUnShowMasLabel.setText("STAT");
+        jPanel8.add(agilidadUnShowMasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 80, -1));
+
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel18.setText("<-- ");
+        jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, -1, -1));
+
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("<--");
+        jPanel8.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
+
+        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel16.setText("<-- ");
+        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, -1, -1));
+
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel17.setText("<-- ");
+        jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
+
+        statsLabel6.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statsLabel6.setText("VIDA");
+        jPanel8.add(statsLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 110, -1));
+
+        statsLabel8.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statsLabel8.setText("FUERZA");
+        jPanel8.add(statsLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 110, -1));
+
+        statsLabel9.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statsLabel9.setText("HABILIDADES");
+        jPanel8.add(statsLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 110, -1));
+
+        statsLabel7.setFont(new java.awt.Font("Phosphate", 0, 15)); // NOI18N
+        statsLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statsLabel7.setText("AGILIDAD");
+        jPanel8.add(statsLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 110, -1));
+
+        unShowMasCharacterNameLabel.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        unShowMasCharacterNameLabel.setForeground(new java.awt.Color(0, 0, 0));
+        unShowMasCharacterNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unShowMasCharacterNameLabel.setText("UN SHOW MAS NAME");
+        jPanel8.add(unShowMasCharacterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, 20));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 300, 570));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 610, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AILabel;
+    private javax.swing.JLabel agilidadAvatarLabel;
+    private javax.swing.JLabel agilidadUnShowMasLabel;
+    private javax.swing.JLabel avatarCharacterNameLabel;
+    private javax.swing.JTextArea colaAltaCartoonTextArea;
+    private javax.swing.JTextArea colaAltaNickTextArea;
+    private javax.swing.JTextArea colaBajaCartoonTextArea;
+    private javax.swing.JTextArea colaBajaNickTextArea;
+    private javax.swing.JTextArea colaMediaCartoonTextArea;
+    private javax.swing.JTextArea colaMediaNickTextArea;
+    private javax.swing.JTextArea colaRefuerzoCartoonTextArea;
+    private javax.swing.JTextArea colaRefuerzoNickTextArea;
+    private javax.swing.JLabel fuerzaAvatarLabel;
+    private javax.swing.JLabel fuerzaUnShowMasLabel;
+    private javax.swing.JLabel habilidadesAvatarLabel;
+    private javax.swing.JLabel habilidadesUnShowMasLabel;
+    private javax.swing.JLabel imgLabelCartoon;
+    private javax.swing.JLabel imgLabelNick;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel labelAI2;
+    private javax.swing.JLabel statsLabel;
+    private javax.swing.JLabel statsLabel10;
+    private javax.swing.JLabel statsLabel2;
+    private javax.swing.JLabel statsLabel3;
+    private javax.swing.JLabel statsLabel4;
+    private javax.swing.JLabel statsLabel5;
+    private javax.swing.JLabel statsLabel6;
+    private javax.swing.JLabel statsLabel7;
+    private javax.swing.JLabel statsLabel8;
+    private javax.swing.JLabel statsLabel9;
+    private javax.swing.JLabel unShowMasCharacterNameLabel;
+    private javax.swing.JLabel vidaAvatarLabel;
+    private javax.swing.JLabel vidaUnShowMasLabel;
     // End of variables declaration//GEN-END:variables
 }

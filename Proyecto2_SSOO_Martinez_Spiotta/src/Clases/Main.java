@@ -6,6 +6,7 @@ package Clases;
 
 import EstructurasDeDatos.Queue;
 import Interfaces.MainInterface;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,13 +19,24 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        String [] arrayAvatarCharacters = new String[] {"Aang", "Ch2", "Ch3", "Ch4", "Ch5", "Ch6", "Ch7", "Ch8", "Ch9", "Ch10"};
-        String [] arrayAvatarCharactersImgRoutes = new String[] {"R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10"};
-        String [] arrayUnShowMasCharacters = new String[] {"Mordecai", "Ch2", "Ch3", "Ch4", "Ch5", "Ch6", "Ch7", "Ch8", "Ch9", "Ch10"};
-        String [] arrayUnShowMasCharactersImgRoutes = new String[] {"R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10"};
+        String [] arrayAvatarCharacters = new String[] {"Aang", "Katara", "Sokka", "Toph", "Appa", "Momo", "Zuko", "Iroh", "Azula", "Korra"};
+        String [] arrayAvatarCharactersImgRoutes = new String[] {"src/Imagenes/aang.gif", "src/Imagenes/katara.gif", "src/Imagenes/sokka.gif", "src/Imagenes/Toph.gif", "src/Imagenes/appa.gif", "src/Imagenes/momo.gif", "src/Imagenes/zuko.gif", "src/Imagenes/iroh.gif", "src/Imagenes/azula.gif", "src/Imagenes/korra.gif"};
+        String [] arrayUnShowMasCharacters = new String[] {"Mordecai", "Rigby", "Musculoso", "Benson", "Skips", "Papaleta", "Starla", "Margarita", "Fantasmin", "Mr. Maellard"};
+        String [] arrayUnShowMasCharactersImgRoutes = new String[] {"src/Imagenes/mordecai.gif", "src/Imagenes/rigby.gif", "src/Imagenes/musculoso.gif", "src/Imagenes/benson.gif", "src/Imagenes/skips.gif", "src/Imagenes/papaleta.gif", "src/Imagenes/starla.gif", "src/Imagenes/margarita.gif", "src/Imagenes/fantasmin.gif", "src/Imagenes/MrMaellard.gif"};
         
-        Company nickelodeon = new Company(arrayAvatarCharacters, arrayAvatarCharactersImgRoutes);
-        Company cartoonNetwork = new Company(arrayUnShowMasCharacters, arrayUnShowMasCharactersImgRoutes);
+        // Crea un array de ImageIcon
+        ImageIcon[] arrayAvatarCharactersImg = new ImageIcon[arrayAvatarCharactersImgRoutes.length];
+        for (int i = 0; i < arrayAvatarCharactersImgRoutes.length; i++) {
+            arrayAvatarCharactersImg[i] = new ImageIcon(arrayAvatarCharactersImgRoutes[i]);
+        }
+        
+        ImageIcon[] arrayUnShowMasCharactersImg = new ImageIcon[arrayUnShowMasCharactersImgRoutes.length];
+        for (int i = 0; i < arrayUnShowMasCharactersImgRoutes.length; i++) {
+            arrayUnShowMasCharactersImg[i] = new ImageIcon(arrayUnShowMasCharactersImgRoutes[i]);
+        }
+        
+        Company nickelodeon = new Company(arrayAvatarCharacters, arrayAvatarCharactersImg);
+        Company cartoonNetwork = new Company(arrayUnShowMasCharacters, arrayUnShowMasCharactersImg);
         
         
         MainInterface main = new MainInterface(nickelodeon, cartoonNetwork);

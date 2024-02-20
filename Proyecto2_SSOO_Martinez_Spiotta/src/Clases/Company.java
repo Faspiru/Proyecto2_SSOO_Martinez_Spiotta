@@ -5,6 +5,7 @@
 package Clases;
 
 import EstructurasDeDatos.Queue;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,9 +18,9 @@ public class Company {
     private Queue colaBaja;   
     private Queue colaRefuerzo;
     private String [] arrayCharacters;
-    private String [] arrayCharactersImgRoutes;
+    private ImageIcon [] arrayCharactersImgRoutes;
 
-    public Company(String[] arrayCharacters, String[] arrayCharactersImgRoutes) {
+    public Company(String[] arrayCharacters, ImageIcon[] arrayCharactersImgRoutes) {
         this.colaAlta = new Queue();
         this.colaMedia = new Queue();
         this.colaBaja = new Queue();
@@ -68,11 +69,11 @@ public class Company {
         this.arrayCharacters = arrayCharacters;
     }
 
-    public String[] getArrayCharactersImgRoutes() {
+    public ImageIcon[] getArrayCharactersImgRoutes() {
         return arrayCharactersImgRoutes;
     }
 
-    public void setArrayCharactersImgRoutes(String[] arrayCharactersImgRoutes) {
+    public void setArrayCharactersImgRoutes(ImageIcon[] arrayCharactersImgRoutes) {
         this.arrayCharactersImgRoutes = arrayCharactersImgRoutes;
     }
     

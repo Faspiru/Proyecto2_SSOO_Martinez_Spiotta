@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author fabriziospiotta
@@ -18,10 +20,10 @@ public class Character {
     private int vida;
     private int fuerza;
     private int agilidad;
-    private String imgRoute;
+    private ImageIcon imgRoute;
     private int counter;
 
-    public Character(String idString, int idNumber, String nameCharacter, int habilidades, int vida, int fuerza, int agilidad, String imgRoute) {
+    public Character(String idString, int idNumber, String nameCharacter, int habilidades, int vida, int fuerza, int agilidad, ImageIcon imgRoute) {
         this.id = idString + idNumber;
         this.nameCharacter = nameCharacter;
         this.habilidades = habilidades;
@@ -185,14 +187,14 @@ public class Character {
     /**
      * @return the imgRoute
      */
-    public String getImgRoute() {
+    public ImageIcon getImgRoute() {
         return imgRoute;
     }
 
     /**
      * @param imgRoute the imgRoute to set
      */
-    public void setImgRoute(String imgRoute) {
+    public void setImgRoute(ImageIcon imgRoute) {
         this.imgRoute = imgRoute;
     }
     

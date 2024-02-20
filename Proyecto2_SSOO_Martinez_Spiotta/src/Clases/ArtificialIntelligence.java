@@ -8,6 +8,7 @@ import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 
 /**
  *
@@ -25,6 +26,8 @@ public class ArtificialIntelligence extends Thread{
     private int result;
     private int batles;
     
+    private JLabel[] labels;
+    
     public ArtificialIntelligence(Semaphore mutex, Semaphore mutex2, Semaphore mutex3){
         this.unShowMas = null;
         this.avatar = null;
@@ -32,7 +35,7 @@ public class ArtificialIntelligence extends Thread{
         int result = 0;
         int batles = 0;
         this.status = "Esperando";
-        this.duration = 3000; // Cambiar a 10000
+        this.duration = 10000; // Cambiar a 10000
         this.mutex = mutex;
         this.mutex2 = mutex2;
         this.mutex3 = mutex3;
@@ -46,9 +49,11 @@ public class ArtificialIntelligence extends Thread{
                     work();
                     sleep(duration);
                     setStatusAI("Anunciando");
+                    labels[12].setText(status);
                     sleep(4000); // Revisar
                     // show();
                     setStatusAI("Esperando");
+                    labels[12].setText(status);
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger("").log(Level.SEVERE, null, ex);
@@ -218,6 +223,14 @@ public class ArtificialIntelligence extends Thread{
 
     public void setBatles(int batles) {
         this.batles = batles;
+    }
+
+    public JLabel[] getLabels() {
+        return labels;
+    }
+
+    public void setLabels(JLabel[] labels) {
+        this.labels = labels;
     }
     
     
