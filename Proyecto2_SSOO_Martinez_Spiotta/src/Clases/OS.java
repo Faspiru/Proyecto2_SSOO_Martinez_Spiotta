@@ -81,6 +81,7 @@ public class OS extends Thread{
                 }
 
                 if (statusAI("Esperando")){
+                    labels[15].setText("xxxxx");
                     chosenOneA = choose(nickelodeon);
                     chosenOneU = choose(cartoonNetwork);
                     ai.setAvatar(chosenOneA);
@@ -127,6 +128,7 @@ public class OS extends Thread{
                                 cartoonNetwork.getColaRefuerzo().encolar(chosenOneU);
                             }
                             System.out.println("\n\n ROUND --> " + batles);
+                            labels[16].setText(Integer.toString(batles));
 //                            labels[0].setIcon(nickelodeon.getColaAlta().getpFirst().getElemento().getImgRoute()); // Probando
 //                            labels[1].setIcon(cartoonNetwork.getColaAlta().getpFirst().getElemento().getImgRoute()); // Probando
                             //System.out.println("\nPrioridad Alta --> ");
@@ -176,7 +178,7 @@ public class OS extends Thread{
 
                 manejoColaRefuerzo(nickelodeon);
                 manejoColaRefuerzo(cartoonNetwork);
-                sleep(3000); // Para que se vea el esperando
+                sleep(10000); // Para que se vea el esperando
             } catch (InterruptedException ex) {
                 Logger.getLogger("").log(Level.SEVERE, null, ex);
             }

@@ -25,6 +25,8 @@ public class ArtificialIntelligence extends Thread{
     private int duration;
     private int result;
     private int batles;
+    private int avatarWins;
+    private int unShowMasWins;
     
     private JLabel[] labels;
     
@@ -50,8 +52,12 @@ public class ArtificialIntelligence extends Thread{
                     sleep(duration);
                     setStatusAI("Anunciando");
                     labels[12].setText(status);
+//                    labels[13].setText(Integer.toString(avatarWins));
+//                    labels[14].setText(Integer.toString(unShowMasWins));
                     sleep(4000); // Revisar
-                    // show();
+                    labels[13].setText(Integer.toString(avatarWins));
+                    labels[14].setText(Integer.toString(unShowMasWins));
+                    show();
                     setStatusAI("Esperando");
                     labels[12].setText(status);
                 }
@@ -153,10 +159,26 @@ public class ArtificialIntelligence extends Thread{
             } else {
                 ganador = avatar;
             }
-        }       
+        } 
+        
+        if (ganador.getId().contains("U")) {
+            unShowMasWins++;
+            
+        } else {
+            avatarWins++;
+            
+        }
     }
     
     public void show(){
+        if (result == 1) {
+            labels[15].setText("GANADOR: " + ganador.getId() + " " + ganador.getNameCharacter());
+        }
+        else if (result == 2) {
+            labels[15].setText("EMPATE");
+        } else {
+            labels[15].setText("NO SE PUDO HACER EL COMBATE");
+        }
         // Etiquetas, pero si result == 1, hay un ganador en el atributo ganador
         // Si result == 2 empate, y si result == 3 no se pudo llevar a cabo
     }

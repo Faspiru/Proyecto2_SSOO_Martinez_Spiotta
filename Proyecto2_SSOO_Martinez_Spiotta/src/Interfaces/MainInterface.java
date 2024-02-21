@@ -8,7 +8,6 @@ import Clases.ArtificialIntelligence;
 import Clases.Company;
 import Clases.OS;
 import java.util.concurrent.Semaphore;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
@@ -20,6 +19,7 @@ public class MainInterface extends javax.swing.JFrame {
     
     static Company nickelodeon;
     static Company cartoonNetwork;
+    static ArtificialIntelligence ai;
 
     /**
      * Creates new form MainInterface
@@ -33,9 +33,10 @@ public class MainInterface extends javax.swing.JFrame {
         Semaphore mutex2 = new Semaphore(1);
         Semaphore mutex3 = new Semaphore(1);
         ArtificialIntelligence ai = new ArtificialIntelligence(mutex, mutex2, mutex3);
+        this.ai = ai;
         
         JTextArea [] textAreasArray = {colaAltaNickTextArea, colaMediaNickTextArea, colaBajaNickTextArea, colaRefuerzoNickTextArea, colaAltaCartoonTextArea, colaMediaCartoonTextArea, colaBajaCartoonTextArea, colaRefuerzoCartoonTextArea};
-        JLabel [] labelsArray = {imgLabelNick, imgLabelCartoon, avatarCharacterNameLabel, AILabel, vidaAvatarLabel, fuerzaAvatarLabel, habilidadesAvatarLabel, agilidadAvatarLabel, vidaUnShowMasLabel, fuerzaUnShowMasLabel, habilidadesUnShowMasLabel, agilidadUnShowMasLabel, AILabel};
+        JLabel [] labelsArray = {imgLabelNick, imgLabelCartoon, avatarCharacterNameLabel, unShowMasCharacterNameLabel, vidaAvatarLabel, fuerzaAvatarLabel, habilidadesAvatarLabel, agilidadAvatarLabel, vidaUnShowMasLabel, fuerzaUnShowMasLabel, habilidadesUnShowMasLabel, agilidadUnShowMasLabel, AILabel, avatarWinsLabel, unShowMasWinsLabel, resultLabel, roundsLabel};
         
         ai.setLabels(labelsArray);
         
@@ -82,9 +83,15 @@ public class MainInterface extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        sliderTime = new javax.swing.JSlider();
+        labelAI5 = new javax.swing.JLabel();
+        roundsLabel = new javax.swing.JLabel();
+        labelAI4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         AILabel = new javax.swing.JLabel();
         labelAI2 = new javax.swing.JLabel();
+        labelAI3 = new javax.swing.JLabel();
+        resultLabel = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         vidaAvatarLabel = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -102,6 +109,9 @@ public class MainInterface extends javax.swing.JFrame {
         imgLabelNick = new javax.swing.JLabel();
         avatarCharacterNameLabel = new javax.swing.JLabel();
         statsLabel2 = new javax.swing.JLabel();
+        avatarWinsLabel = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        statsLabel11 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         imgLabelCartoon = new javax.swing.JLabel();
@@ -119,6 +129,8 @@ public class MainInterface extends javax.swing.JFrame {
         statsLabel9 = new javax.swing.JLabel();
         statsLabel7 = new javax.swing.JLabel();
         unShowMasCharacterNameLabel = new javax.swing.JLabel();
+        unShowMasWinsLabel = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,7 +207,7 @@ public class MainInterface extends javax.swing.JFrame {
         jLabel20.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/avatarPosterFondo.png")); // NOI18N
         jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 590));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 720));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -273,27 +285,77 @@ public class MainInterface extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/unShowMasPosterFondo.png")); // NOI18N
         jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 390, 590));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 390, 720));
         jPanel6.getAccessibleContext().setAccessibleName("");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        sliderTime.setBackground(new java.awt.Color(0, 0, 0));
+        sliderTime.setFont(new java.awt.Font("Phosphate", 1, 13)); // NOI18N
+        sliderTime.setForeground(new java.awt.Color(0, 0, 0));
+        sliderTime.setMajorTickSpacing(1);
+        sliderTime.setMaximum(20);
+        sliderTime.setMinimum(1);
+        sliderTime.setPaintLabels(true);
+        sliderTime.setPaintTicks(true);
+        sliderTime.setSnapToTicks(true);
+        sliderTime.setValue(10);
+        sliderTime.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sliderTime.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderTimeStateChanged(evt);
+            }
+        });
+        jPanel1.add(sliderTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 570, 70));
+
+        labelAI5.setFont(new java.awt.Font("Phosphate", 3, 14)); // NOI18N
+        labelAI5.setForeground(new java.awt.Color(0, 0, 0));
+        labelAI5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAI5.setText("ROUNDS:");
+        jPanel1.add(labelAI5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 270, 30));
+
+        roundsLabel.setFont(new java.awt.Font("Phosphate", 3, 14)); // NOI18N
+        roundsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        roundsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        roundsLabel.setText("0");
+        jPanel1.add(roundsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 270, 70));
+
+        labelAI4.setFont(new java.awt.Font("Phosphate", 3, 14)); // NOI18N
+        labelAI4.setForeground(new java.awt.Color(0, 0, 0));
+        labelAI4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAI4.setText("DURACÍON DE DECISION AI  EN SEGUNDOS");
+        jPanel1.add(labelAI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 270, 30));
+
         jLabel11.setIcon(new javax.swing.ImageIcon("/Users/fabriziospiotta/Documents/Sistemas Operativos/Proyecto2_SSOO_Martinez_Spiotta/Proyecto2_SSOO_Martinez_Spiotta/src/Imagenes/versus.gif")); // NOI18N
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 210, -1));
 
-        AILabel.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        AILabel.setFont(new java.awt.Font("Phosphate", 3, 14)); // NOI18N
         AILabel.setForeground(new java.awt.Color(0, 0, 0));
         AILabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AILabel.setText("Esperando");
-        jPanel1.add(AILabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 100));
+        jPanel1.add(AILabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 70));
 
-        labelAI2.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        labelAI2.setFont(new java.awt.Font("Phosphate", 3, 14)); // NOI18N
         labelAI2.setForeground(new java.awt.Color(0, 0, 0));
         labelAI2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelAI2.setText("ARTIFICIAL INTELLIGENCE STATUS");
-        jPanel1.add(labelAI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 40));
+        labelAI2.setText("ARTIFICIAL INTELLIGENCE STATUS:");
+        jPanel1.add(labelAI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 30));
+
+        labelAI3.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        labelAI3.setForeground(new java.awt.Color(0, 0, 0));
+        labelAI3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAI3.setText("RESULTADO:");
+        labelAI3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(labelAI3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 410));
+
+        resultLabel.setFont(new java.awt.Font("Phosphate", 3, 18)); // NOI18N
+        resultLabel.setForeground(new java.awt.Color(0, 0, 0));
+        resultLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        resultLabel.setText("xxxxx");
+        resultLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(resultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 270, 440));
 
         jPanel7.setBackground(new java.awt.Color(153, 102, 0));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -384,7 +446,24 @@ public class MainInterface extends javax.swing.JFrame {
         statsLabel2.setText("ESTADísticas");
         jPanel7.add(statsLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 570));
+        avatarWinsLabel.setFont(new java.awt.Font("Phosphate", 0, 14)); // NOI18N
+        avatarWinsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        avatarWinsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        avatarWinsLabel.setText("0");
+        jPanel7.add(avatarWinsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 20, -1));
+
+        jLabel23.setFont(new java.awt.Font("Phosphate", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("AVATAR WINS:");
+        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        statsLabel11.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        statsLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statsLabel11.setText("ESTADísticas");
+        jPanel7.add(statsLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 700));
 
         jPanel8.setBackground(new java.awt.Color(102, 102, 0));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -475,9 +554,20 @@ public class MainInterface extends javax.swing.JFrame {
         unShowMasCharacterNameLabel.setText("UN SHOW MAS NAME");
         jPanel8.add(unShowMasCharacterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 190, 20));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 300, 570));
+        unShowMasWinsLabel.setFont(new java.awt.Font("Phosphate", 0, 14)); // NOI18N
+        unShowMasWinsLabel.setForeground(new java.awt.Color(0, 0, 0));
+        unShowMasWinsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unShowMasWinsLabel.setText("0");
+        jPanel8.add(unShowMasWinsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 20, -1));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 610, 590));
+        jLabel25.setFont(new java.awt.Font("Phosphate", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("UN SHOW MAS WINS:");
+        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 300, 700));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 610, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,11 +583,19 @@ public class MainInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
+        // TODO add your handling code here:
+        System.out.println(ai.getDuration());
+        ai.setDuration(sliderTime.getValue() * 1000);
+        System.out.println(ai.getDuration());
+    }//GEN-LAST:event_sliderTimeStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AILabel;
     private javax.swing.JLabel agilidadAvatarLabel;
     private javax.swing.JLabel agilidadUnShowMasLabel;
     private javax.swing.JLabel avatarCharacterNameLabel;
+    private javax.swing.JLabel avatarWinsLabel;
     private javax.swing.JTextArea colaAltaCartoonTextArea;
     private javax.swing.JTextArea colaAltaNickTextArea;
     private javax.swing.JTextArea colaBajaCartoonTextArea;
@@ -526,6 +624,8 @@ public class MainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -542,8 +642,15 @@ public class MainInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel labelAI2;
+    private javax.swing.JLabel labelAI3;
+    private javax.swing.JLabel labelAI4;
+    private javax.swing.JLabel labelAI5;
+    private javax.swing.JLabel resultLabel;
+    private javax.swing.JLabel roundsLabel;
+    private javax.swing.JSlider sliderTime;
     private javax.swing.JLabel statsLabel;
     private javax.swing.JLabel statsLabel10;
+    private javax.swing.JLabel statsLabel11;
     private javax.swing.JLabel statsLabel2;
     private javax.swing.JLabel statsLabel3;
     private javax.swing.JLabel statsLabel4;
@@ -553,6 +660,7 @@ public class MainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel statsLabel8;
     private javax.swing.JLabel statsLabel9;
     private javax.swing.JLabel unShowMasCharacterNameLabel;
+    private javax.swing.JLabel unShowMasWinsLabel;
     private javax.swing.JLabel vidaAvatarLabel;
     private javax.swing.JLabel vidaUnShowMasLabel;
     // End of variables declaration//GEN-END:variables
