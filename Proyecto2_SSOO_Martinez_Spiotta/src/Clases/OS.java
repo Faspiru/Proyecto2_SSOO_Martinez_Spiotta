@@ -121,7 +121,11 @@ public class OS extends Thread{
                             if (result == 1){
                                 ganadores.encolar(ai.getGanador());
                             } else if (result == 2){
+                                chosenOneA.setPriorityLevel(1);
+                                chosenOneA.setType("Excepcional");
                                 nickelodeon.getColaAlta().encolar(chosenOneA);
+                                chosenOneU.setPriorityLevel(1);
+                                chosenOneU.setType("Excepcional");
                                 cartoonNetwork.getColaAlta().encolar(chosenOneU);
                             } else {
                                 nickelodeon.getColaRefuerzo().encolar(chosenOneA);
@@ -437,6 +441,7 @@ public class OS extends Thread{
                 nuevo.setHabilidades(h);
                 nuevo.setVida(v);
                 nuevo.setPriorityLevel(1);
+                nuevo.setType("Excepcional");
                 
                 company.getColaAlta().encolar(nuevo);
             }else {
@@ -466,6 +471,7 @@ public class OS extends Thread{
             if (aux.getElemento().getCounter() == 8){
                 Character personaje = company.getColaMedia().desencolarCharacter(aux.getElemento().getId()).getElemento();
                 personaje.restart();
+                personaje.setType("Excepcional");
                 company.getColaAlta().encolar(personaje);
                 size -= 1;
             } else {
@@ -481,6 +487,7 @@ public class OS extends Thread{
             if (aux.getElemento().getCounter() == 8){
                 Character personaje = company.getColaBaja().desencolarCharacter(aux.getElemento().getId()).getElemento();
                 personaje.restart();
+                personaje.setType("Promedio");
                 company.getColaMedia().encolar(personaje);
             }else {
                 aux.getElemento().setCounter(aux.getElemento().getCounter() + 1);
