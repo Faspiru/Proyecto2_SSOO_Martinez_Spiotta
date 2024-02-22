@@ -4,11 +4,13 @@
  */
 package Clases;
 
+import EstructurasDeDatos.Queue;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -18,6 +20,7 @@ public class ArtificialIntelligence extends Thread{
     private Character unShowMas;
     private Character avatar;
     private Character ganador;
+    private Queue ganadores;
     private String status;
     private Semaphore mutex;
     private Semaphore mutex2;
@@ -29,6 +32,7 @@ public class ArtificialIntelligence extends Thread{
     private int unShowMasWins;
     
     private JLabel[] labels;
+    private JTextArea ganadoresTextArea;
     
     public ArtificialIntelligence(Semaphore mutex, Semaphore mutex2, Semaphore mutex3){
         this.unShowMas = null;
@@ -177,8 +181,10 @@ public class ArtificialIntelligence extends Thread{
         else if (result == 2) {
             labels[15].setText("EMPATE");
         } else {
-            labels[15].setText("NO SE PUDO HACER EL COMBATE");
+            labels[15].setText("COMBATE ANULADO");
         }
+        
+        ganadoresTextArea.setText(ganadores.converterToStringNick());
         // Etiquetas, pero si result == 1, hay un ganador en el atributo ganador
         // Si result == 2 empate, y si result == 3 no se pudo llevar a cabo
     }
@@ -254,6 +260,23 @@ public class ArtificialIntelligence extends Thread{
     public void setLabels(JLabel[] labels) {
         this.labels = labels;
     }
+
+    public JTextArea getGanadoresTextArea() {
+        return ganadoresTextArea;
+    }
+
+    public void setGanadoresTextArea(JTextArea ganadoresTextArea) {
+        this.ganadoresTextArea = ganadoresTextArea;
+    }
+
+    public Queue getGanadores() {
+        return ganadores;
+    }
+
+    public void setGanadores(Queue ganadores) {
+        this.ganadores = ganadores;
+    }
+    
     
     
     

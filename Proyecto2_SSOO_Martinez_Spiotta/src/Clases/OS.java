@@ -88,8 +88,8 @@ public class OS extends Thread{
                     ai.setUnShowMas(chosenOneU);
                     labels[0].setIcon(chosenOneA.getImgRoute()); // Probando
                     labels[1].setIcon(chosenOneU.getImgRoute()); // Probando
-                    labels[2].setText(chosenOneA.getNameCharacter()); // Probando
-                    labels[3].setText(chosenOneU.getNameCharacter()); // Probando
+                    labels[2].setText(chosenOneA.getId() + " - " + chosenOneA.getNameCharacter()); // Probando
+                    labels[3].setText(chosenOneU.getId() + " - " + chosenOneU.getNameCharacter()); // Probando
                     
                     // Setting de stats
                     
@@ -107,7 +107,10 @@ public class OS extends Thread{
                     labels[10].setText(Integer.toString(chosenOneU.getHabilidades()));
                     labels[11].setText(Integer.toString(chosenOneU.getAgilidad()));
                     
+                    // Seetin de type
                     
+                    labels[17].setText(chosenOneA.getType());
+                    labels[18].setText(chosenOneU.getType());
                     
                     setStatusAI("Decidiendo");
                     labels[12].setText(ai.getStatus());
@@ -511,6 +514,14 @@ public class OS extends Thread{
     public void setLabels(JLabel[] labels) {
         this.labels = labels;
     }
+
+    public Queue getGanadores() {
+        return ganadores;
+    }
+
+    public void setGanadores(Queue ganadores) {
+        this.ganadores = ganadores;
+    }
     
-  
+    
 }

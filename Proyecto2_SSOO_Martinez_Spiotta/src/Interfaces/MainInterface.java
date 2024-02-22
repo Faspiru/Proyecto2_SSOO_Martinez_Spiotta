@@ -20,6 +20,8 @@ public class MainInterface extends javax.swing.JFrame {
     static Company nickelodeon;
     static Company cartoonNetwork;
     static ArtificialIntelligence ai;
+    static OS so;
+    static winnersInterface winners;
 
     /**
      * Creates new form MainInterface
@@ -35,8 +37,11 @@ public class MainInterface extends javax.swing.JFrame {
         ArtificialIntelligence ai = new ArtificialIntelligence(mutex, mutex2, mutex3);
         this.ai = ai;
         
+        winnersInterface winners = new winnersInterface(so, ai);
+        this.winners = winners;
+        
         JTextArea [] textAreasArray = {colaAltaNickTextArea, colaMediaNickTextArea, colaBajaNickTextArea, colaRefuerzoNickTextArea, colaAltaCartoonTextArea, colaMediaCartoonTextArea, colaBajaCartoonTextArea, colaRefuerzoCartoonTextArea};
-        JLabel [] labelsArray = {imgLabelNick, imgLabelCartoon, avatarCharacterNameLabel, unShowMasCharacterNameLabel, vidaAvatarLabel, fuerzaAvatarLabel, habilidadesAvatarLabel, agilidadAvatarLabel, vidaUnShowMasLabel, fuerzaUnShowMasLabel, habilidadesUnShowMasLabel, agilidadUnShowMasLabel, AILabel, avatarWinsLabel, unShowMasWinsLabel, resultLabel, roundsLabel};
+        JLabel [] labelsArray = {imgLabelNick, imgLabelCartoon, avatarCharacterNameLabel, unShowMasCharacterNameLabel, vidaAvatarLabel, fuerzaAvatarLabel, habilidadesAvatarLabel, agilidadAvatarLabel, vidaUnShowMasLabel, fuerzaUnShowMasLabel, habilidadesUnShowMasLabel, agilidadUnShowMasLabel, AILabel, avatarWinsLabel, unShowMasWinsLabel, resultLabel, roundsLabel, characterAvatarTypeLabel, characterCartoonTypeLabel};
         
         ai.setLabels(labelsArray);
         
@@ -44,6 +49,8 @@ public class MainInterface extends javax.swing.JFrame {
 //        imgLabelCartoon.setIcon(icon);
            
         OS so = new OS(nickelodeon, cartoonNetwork, ai, mutex, mutex2, mutex3);
+        this.so = so;
+        ai.setGanadores(so.getGanadores());
         so.setTextAreas(textAreasArray);
         so.setLabels(labelsArray);
         so.start();
@@ -72,6 +79,7 @@ public class MainInterface extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        buttonGanadores = new javax.swing.JButton();
         colaBajaCartoonTextArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         colaMediaCartoonTextArea = new javax.swing.JTextArea();
@@ -108,10 +116,11 @@ public class MainInterface extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         imgLabelNick = new javax.swing.JLabel();
         avatarCharacterNameLabel = new javax.swing.JLabel();
-        statsLabel2 = new javax.swing.JLabel();
         avatarWinsLabel = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         statsLabel11 = new javax.swing.JLabel();
+        statsLabel12 = new javax.swing.JLabel();
+        characterAvatarTypeLabel = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         imgLabelCartoon = new javax.swing.JLabel();
@@ -131,6 +140,7 @@ public class MainInterface extends javax.swing.JFrame {
         unShowMasCharacterNameLabel = new javax.swing.JLabel();
         unShowMasWinsLabel = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        characterCartoonTypeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +221,18 @@ public class MainInterface extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonGanadores.setBackground(new java.awt.Color(230, 238, 91));
+        buttonGanadores.setFont(new java.awt.Font("Phosphate", 0, 13)); // NOI18N
+        buttonGanadores.setForeground(new java.awt.Color(0, 0, 0));
+        buttonGanadores.setText("VER GANADORES");
+        buttonGanadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonGanadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGanadoresActionPerformed(evt);
+            }
+        });
+        jPanel6.add(buttonGanadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 670, -1, -1));
 
         colaBajaCartoonTextArea.setEditable(false);
         colaBajaCartoonTextArea.setBackground(new java.awt.Color(230, 238, 91));
@@ -440,12 +462,6 @@ public class MainInterface extends javax.swing.JFrame {
         avatarCharacterNameLabel.setText("AVATAR NAME");
         jPanel7.add(avatarCharacterNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 20));
 
-        statsLabel2.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
-        statsLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        statsLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        statsLabel2.setText("ESTADísticas");
-        jPanel7.add(statsLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
-
         avatarWinsLabel.setFont(new java.awt.Font("Phosphate", 0, 14)); // NOI18N
         avatarWinsLabel.setForeground(new java.awt.Color(0, 0, 0));
         avatarWinsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -462,6 +478,18 @@ public class MainInterface extends javax.swing.JFrame {
         statsLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         statsLabel11.setText("ESTADísticas");
         jPanel7.add(statsLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
+
+        statsLabel12.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        statsLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        statsLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statsLabel12.setText("ESTADísticas");
+        jPanel7.add(statsLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 20));
+
+        characterAvatarTypeLabel.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        characterAvatarTypeLabel.setForeground(new java.awt.Color(0, 0, 0));
+        characterAvatarTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        characterAvatarTypeLabel.setText("Type");
+        jPanel7.add(characterAvatarTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 190, 20));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 700));
 
@@ -565,6 +593,12 @@ public class MainInterface extends javax.swing.JFrame {
         jLabel25.setText("UN SHOW MAS WINS:");
         jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
+        characterCartoonTypeLabel.setFont(new java.awt.Font("Phosphate", 0, 18)); // NOI18N
+        characterCartoonTypeLabel.setForeground(new java.awt.Color(0, 0, 0));
+        characterCartoonTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        characterCartoonTypeLabel.setText("Type");
+        jPanel8.add(characterCartoonTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 190, 20));
+
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 300, 700));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 610, 720));
@@ -590,12 +624,22 @@ public class MainInterface extends javax.swing.JFrame {
         System.out.println(ai.getDuration());
     }//GEN-LAST:event_sliderTimeStateChanged
 
+    private void buttonGanadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGanadoresActionPerformed
+        // TODO add your handling code here:
+//        winnersInterface winners = new winnersInterface(so, ai);
+        winners.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        winners.show();
+    }//GEN-LAST:event_buttonGanadoresActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AILabel;
     private javax.swing.JLabel agilidadAvatarLabel;
     private javax.swing.JLabel agilidadUnShowMasLabel;
     private javax.swing.JLabel avatarCharacterNameLabel;
     private javax.swing.JLabel avatarWinsLabel;
+    private javax.swing.JButton buttonGanadores;
+    private javax.swing.JLabel characterAvatarTypeLabel;
+    private javax.swing.JLabel characterCartoonTypeLabel;
     private javax.swing.JTextArea colaAltaCartoonTextArea;
     private javax.swing.JTextArea colaAltaNickTextArea;
     private javax.swing.JTextArea colaBajaCartoonTextArea;
@@ -651,7 +695,7 @@ public class MainInterface extends javax.swing.JFrame {
     private javax.swing.JLabel statsLabel;
     private javax.swing.JLabel statsLabel10;
     private javax.swing.JLabel statsLabel11;
-    private javax.swing.JLabel statsLabel2;
+    private javax.swing.JLabel statsLabel12;
     private javax.swing.JLabel statsLabel3;
     private javax.swing.JLabel statsLabel4;
     private javax.swing.JLabel statsLabel5;
