@@ -619,9 +619,7 @@ public class MainInterface extends javax.swing.JFrame {
 
     private void sliderTimeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderTimeStateChanged
         // TODO add your handling code here:
-        System.out.println(ai.getDuration());
         ai.setDuration(sliderTime.getValue() * 1000);
-        System.out.println(ai.getDuration());
     }//GEN-LAST:event_sliderTimeStateChanged
 
     private void buttonGanadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGanadoresActionPerformed

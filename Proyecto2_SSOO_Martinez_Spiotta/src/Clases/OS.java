@@ -54,15 +54,15 @@ public class OS extends Thread{
         this.mutex3 = mutex3;
         this.batles = 0;
         generate();
-        System.out.println("Prioridad Alta --> ");
-        System.out.println(nickelodeon.getColaAlta().converterToStringNick());
-        System.out.println(cartoonNetwork.getColaAlta().converterToStringCartoon());
-        System.out.println("\nPrioridad Media --> ");
-        System.out.println(nickelodeon.getColaMedia().converterToStringNick());
-        System.out.println(cartoonNetwork.getColaMedia().converterToStringCartoon());
-        System.out.println("\nPrioridad Baja --> ");
-        System.out.println(nickelodeon.getColaBaja().converterToStringNick());
-        System.out.println(cartoonNetwork.getColaBaja().converterToStringCartoon());
+//        System.out.println("Prioridad Alta --> ");
+//        System.out.println(nickelodeon.getColaAlta().converterToStringNick());
+//        System.out.println(cartoonNetwork.getColaAlta().converterToStringCartoon());
+//        System.out.println("\nPrioridad Media --> ");
+//        System.out.println(nickelodeon.getColaMedia().converterToStringNick());
+//        System.out.println(cartoonNetwork.getColaMedia().converterToStringCartoon());
+//        System.out.println("\nPrioridad Baja --> ");
+//        System.out.println(nickelodeon.getColaBaja().converterToStringNick());
+//        System.out.println(cartoonNetwork.getColaBaja().converterToStringCartoon());
         ai.start();
     }
     
@@ -134,49 +134,27 @@ public class OS extends Thread{
                                 nickelodeon.getColaRefuerzo().encolar(chosenOneA);
                                 cartoonNetwork.getColaRefuerzo().encolar(chosenOneU);
                             }
-                            System.out.println("\n\n ROUND --> " + batles);
+
                             labels[16].setText(Integer.toString(batles));
-//                            labels[0].setIcon(nickelodeon.getColaAlta().getpFirst().getElemento().getImgRoute()); // Probando
-//                            labels[1].setIcon(cartoonNetwork.getColaAlta().getpFirst().getElemento().getImgRoute()); // Probando
-                            //System.out.println("\nPrioridad Alta --> ");
+
                             textAreas[0].setText(nickelodeon.getColaAlta().converterToStringNick());
-                            //System.out.println(nickelodeon.getColaAlta().converterToStringNick());
+
                             textAreas[4].setText(cartoonNetwork.getColaAlta().converterToStringCartoon());
-                            //System.out.println(cartoonNetwork.getColaAlta().converterToStringCartoon());
                             
-                            //System.out.println("\nPrioridad Media --> ");
                             textAreas[1].setText(nickelodeon.getColaMedia().converterToStringNick());
-                            //System.out.println(nickelodeon.getColaMedia().converterToStringNick());
-                            textAreas[5].setText(cartoonNetwork.getColaMedia().converterToStringCartoon());
-                            //System.out.println(cartoonNetwork.getColaMedia().converterToStringCartoon());
+     
+                            textAreas[5].setText(cartoonNetwork.getColaMedia().converterToStringCartoon());      
                             
-                            //System.out.println("\nPrioridad Baja --> ");
                             textAreas[2].setText(nickelodeon.getColaBaja().converterToStringNick());
-                            //System.out.println(nickelodeon.getColaBaja().converterToStringNick());
+
                             textAreas[6].setText(cartoonNetwork.getColaBaja().converterToStringCartoon());
-                            //System.out.println(cartoonNetwork.getColaBaja().converterToStringCartoon());
                             
-                            //System.out.println("\nRefuerzo --> ");
                             textAreas[3].setText(nickelodeon.getColaRefuerzo().converterToStringNick());
-                            //System.out.println(nickelodeon.getColaRefuerzo().converterToStringNick());
+
                             textAreas[7].setText(cartoonNetwork.getColaRefuerzo().converterToStringCartoon());
-                            //System.out.println(cartoonNetwork.getColaRefuerzo().converterToStringCartoon());
                             
-                            System.out.println("\nGanadores --> ");
-                            System.out.println(ganadores.converterToStringNick());
-                            
-                            //System.out.println("\nNO INANICION -->");
                             modi(nickelodeon);
                             modi(cartoonNetwork);
-                            //System.out.println("\nPrioridad Alta --> ");
-                            //System.out.println(nickelodeon.getColaAlta().converterToStringNick());
-                            //System.out.println(cartoonNetwork.getColaAlta().converterToStringCartoon());
-                            //System.out.println("\nPrioridad Media --> ");
-//                            System.out.println(nickelodeon.getColaMedia().converterToStringNick());
-//                            System.out.println(cartoonNetwork.getColaMedia().converterToStringCartoon());
-//                            System.out.println("\nPrioridad Baja --> ");
-//                            System.out.println(nickelodeon.getColaBaja().converterToStringNick());
-//                            System.out.println(cartoonNetwork.getColaBaja().converterToStringCartoon());
                             
                             break;
                         }
@@ -522,6 +500,5 @@ public class OS extends Thread{
     public void setGanadores(Queue ganadores) {
         this.ganadores = ganadores;
     }
-    
     
 }
