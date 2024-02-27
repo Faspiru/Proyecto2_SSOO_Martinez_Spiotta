@@ -117,7 +117,6 @@ public class ArtificialIntelligence extends Thread{
             } else { // 33% de probabilidad de anular
                 result = 3;
             }
-            System.out.println("\nResultado --> " + result);
             mutex3.release(); // signal
         } catch (InterruptedException ex) {
             Logger.getLogger("").log(Level.SEVERE, null, ex);
